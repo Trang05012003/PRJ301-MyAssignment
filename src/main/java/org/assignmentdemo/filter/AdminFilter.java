@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "LecturerFilter", urlPatterns = {"/lecturer/*"})
-public class LecturerFilter implements Filter {
+@WebFilter(filterName = "AdminFilter", urlPatterns = {"/admin/*"})
+public class AdminFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -20,9 +20,8 @@ public class LecturerFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
 
-        if (session != null && session.getAttribute("role") != null && (session.getAttribute("role").equals("lecturer") || session.getAttribute("role").equals("admin"))) {
+        if (session != null && session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
         }
         httpResponse.sendRedirect("/view/access-denied.jsp");
-    }
-}
+    }}
