@@ -73,12 +73,12 @@ VALUES ('Web development', 1),
        ('IT skills', 1);
 
 INSERT INTO assessments (name, weight)
-VALUES ('Assignment 1', 20),
-       ('Assignment 2', 20),
-       ('Assignment 3', 20),
-       ('Assignment 1', 20),
-       ('Assignment 2', 20),
-       ('Assignment 1', 20);
+VALUES ('WS1', 0.05),
+       ('WS2', 0.05),
+       ('PT1', 0.1),
+       ('PT2', 0.1),
+       ('PE', 0.2),
+       ('FE', 0.2);
 
 INSERT INTO grades (uid, aid, score)
 VALUES (1, 1, 85),
