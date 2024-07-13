@@ -1,60 +1,60 @@
 package org.assignmentdemo.model;
 
-import java.util.ArrayList;
-
 public class Course {
-    private int id;
-    private String name;
-    private Lecturer lecturer;
-    private Subject subject;
-    private Semester semester;
-    private ArrayList<Student> students = new ArrayList<>();
+    private int cid;
+    private String cname;
+    private int lid;
+    private int subid;
+    private int semid;
 
-    public int getId() {
-        return id;
+    public Course() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Course(int cid, String cname, int lid, int subid, int semid) {
+        this.cid = cid;
+        this.cname = cname;
+        this.lid = lid;
+        this.subid = subid;
+        this.semid = semid;
     }
 
-    public String getName() {
-        return name;
+    public int getCid() {
+        return cid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCid(int cid) {
+        this.cid = cid;
     }
 
-    public Lecturer getLecturer() {
-        return lecturer;
+    public String getCname() {
+        return cname;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public int getLid() {
+        return lid;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setLid(int lid) {
+        this.lid = lid;
     }
 
-    public Semester getSemester() {
-        return semester;
+    public int getSubid() {
+        return subid;
     }
 
-    public void setSemester(Semester semester) {
-        this.semester = semester;
+    public void setSubid(int subid) {
+        this.subid = subid;
     }
 
-    public ArrayList<Student> getStudents() {
-        return students;
+    public int getSemid() {
+        return semid;
     }
 
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
+    public void setSemid(int semid) {
+        this.semid = semid;
     }
 }

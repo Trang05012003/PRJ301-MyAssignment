@@ -1,24 +1,33 @@
 package org.assignmentdemo.model;
 
 public class Grade {
-    private Exam exam;
-    private Student student;
+    private int eid;
+    private int sid;
     private float score;
 
-    public Exam getExam() {
-        return exam;
+    public Grade() {
     }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public Grade(int eid, int sid, float score) {
+        this.eid = eid;
+        this.sid = sid;
+        this.score = score;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getEid() {
+        return eid;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setEid(int eid) {
+        this.eid = eid;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 
     public float getScore() {

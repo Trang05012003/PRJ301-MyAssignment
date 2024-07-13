@@ -1,11 +1,30 @@
 package org.assignmentdemo.model;
 
 public class User {
+    private int id;
     private String username;
     private String password;
-    private String displayname;
-    private Lecturer lecturer;
-    private Student student;
+    private String role;
+    private String name;
+
+    public User() {
+    }
+
+    public User(int id, String username, String password, String role, String name) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -23,27 +42,19 @@ public class User {
         this.password = password;
     }
 
-    public String getDisplayname() {
-        return displayname;
+    public String getRole() {
+        return role;
     }
 
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
+    public void setRole(String role) {
+        this.role = role;
     }
 
-    public Lecturer getLecturer() {
-        return lecturer;
+    public String getName() {
+        return name;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setName(String name) {
+        this.name = name;
     }
 }

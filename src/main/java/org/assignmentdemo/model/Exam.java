@@ -1,30 +1,29 @@
 package org.assignmentdemo.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Exam {
-    private int id;
+    private int eid;
     private Date from;
-    private int duration;
-    private Assessment assessment;
-    private ArrayList<Grade> grades = new ArrayList<>();
+    private float duration;
+    private int aid;
 
-    public ArrayList<Grade> getGrades() {
-        return grades;
+    public Exam() {
     }
 
-    public void setGrades(ArrayList<Grade> grades) {
-        this.grades = grades;
+    public Exam(int eid, Date from, float duration, int aid) {
+        this.eid = eid;
+        this.from = from;
+        this.duration = duration;
+        this.aid = aid;
     }
 
-
-    public int getId() {
-        return id;
+    public int getEid() {
+        return eid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEid(int eid) {
+        this.eid = eid;
     }
 
     public Date getFrom() {
@@ -35,19 +34,19 @@ public class Exam {
         this.from = from;
     }
 
-    public int getDuration() {
+    public float getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(float duration) {
         this.duration = duration;
     }
 
-    public Assessment getAssessment() {
-        return assessment;
+    public int getAid() {
+        return aid;
     }
 
-    public void setAssessment(Assessment assessment) {
-        this.assessment = assessment;
+    public void setAid(int aid) {
+        this.aid = aid;
     }
 }

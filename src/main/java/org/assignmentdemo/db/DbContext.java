@@ -1,4 +1,4 @@
-package org.assignmentdemo.dal;
+package org.assignmentdemo.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,6 +25,10 @@ public abstract class DbContext<T> {
         } catch (SQLException ex) {
             Logger.getLogger(DbContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    protected Connection getConnection() {
+        return connection;
     }
 
     public abstract void insert(T model);

@@ -1,42 +1,30 @@
 package org.assignmentdemo.model;
 
-import java.util.ArrayList;
-
 public class Subject {
-    private int id;
-    private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
-    private ArrayList<Assessment> assessments = new ArrayList<>();
+    private int subid;
+    private String subname;
 
-    public int getId() {
-        return id;
+    public Subject() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Subject(int subid, String subname) {
+        this.subid = subid;
+        this.subname = subname;
     }
 
-    public String getName() {
-        return name;
+    public int getSubid() {
+        return subid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSubid(int subid) {
+        this.subid = subid;
     }
 
-    public ArrayList<Course> getCourses() {
-        return courses;
+    public String getSubname() {
+        return subname;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
-    }
-
-    public ArrayList<Assessment> getAssessments() {
-        return assessments;
-    }
-
-    public void setAssessments(ArrayList<Assessment> assessments) {
-        this.assessments = assessments;
+    public void setSubname(String subname) {
+        this.subname = subname;
     }
 }

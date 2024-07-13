@@ -38,32 +38,11 @@ CREATE TABLE grades
     PRIMARY KEY (eid, sid)
 );
 
-CREATE TABLE lecturers
-(
-    lid   INT          NOT NULL,
-    lname VARCHAR(150) NOT NULL,
-    PRIMARY KEY (lid)
-);
-
 CREATE TABLE semester
 (
     semid INT NOT NULL,
     year  INT NOT NULL,
     PRIMARY KEY (semid)
-);
-
-CREATE TABLE students
-(
-    sid   INT          NOT NULL,
-    sname VARCHAR(150) NOT NULL,
-    PRIMARY KEY (sid)
-);
-
-CREATE TABLE students_courses
-(
-    sid INT NOT NULL,
-    cid INT NOT NULL,
-    PRIMARY KEY (sid, cid)
 );
 
 CREATE TABLE subjects
@@ -75,24 +54,27 @@ CREATE TABLE subjects
 
 CREATE TABLE users
 (
-    username VARCHAR(50) NOT NULL,
+    id       INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(50) NOT NULL,
     role     VARCHAR(50) NOT NULL,
-    PRIMARY KEY (username)
+    name     VARCHAR(150) NOT NULL
 );
 
 CREATE TABLE users_lecturers
 (
-    username VARCHAR(50) NOT NULL,
-    lid      INT         NOT NULL,
-    PRIMARY KEY (username, lid)
+    lecturer_id INT NOT NULL,
+    student_id INT NOT NULL,
+    PRIMARY KEY (lecturer_id, student_id),
+    FOREIGN KEY (lecturer_id) REFERENCES users (id),
+    FOREIGN KEY (student_id) REFERENCES users (id)
 );
 
 ALTER TABLE assesments
     ADD CONSTRAINT FK_assesments_subjects FOREIGN KEY (subid) REFERENCES subjects (subid);
 
 ALTER TABLE courses
-    ADD CONSTRAINT FK_courses_lecturers FOREIGN KEY (lid) REFERENCES lecturers (lid);
+    ADD CONSTRAINT FK_courses_lecturers FOREIGN KEY (lid) REFERENCES users (id);
 
 ALTER TABLE courses
     ADD CONSTRAINT FK_courses_semester FOREIGN KEY (semid) REFERENCES semester (semid);
@@ -107,34 +89,19 @@ ALTER TABLE grades
     ADD CONSTRAINT FK_grades_exams FOREIGN KEY (eid) REFERENCES exams (eid);
 
 ALTER TABLE grades
-    ADD CONSTRAINT FK_grades_students FOREIGN KEY (sid) REFERENCES students (sid);
+    ADD CONSTRAINT FK_grades_students FOREIGN KEY (sid) REFERENCES users (id);
 
-ALTER TABLE students_courses
-    ADD CONSTRAINT FK_students_courses_courses FOREIGN KEY (cid) REFERENCES courses (cid);
-
-ALTER TABLE students_courses
-    ADD CONSTRAINT FK_students_courses_students FOREIGN KEY (sid) REFERENCES students (sid);
-
-ALTER TABLE users_lecturers
-    ADD CONSTRAINT FK_users_lecturers_lecturers FOREIGN KEY (lid) REFERENCES lecturers (lid);
-
-ALTER TABLE users_lecturers
-    ADD CONSTRAINT FK_users_lecturers_users FOREIGN KEY (username) REFERENCES users (username);
-
-INSERT INTO users (username, password, role)
-VALUES ('lecturer', 'lecturer', 'lecturer'),
-       ('student', 'student', 'student');
+INSERT INTO users (username, password, role, name)
+VALUES ('lecturer', 'lecturer', 'lecturer', 'lephu'),
+       ('student1', 'student', 'student', 'vanbao'),
+       ('student2', 'student', 'student', 'tuanminh'),
+       ('student3', 'student', 'student', 'hoainam'),
+       ('student4', 'student', 'student', 'trungdung');
 
 INSERT INTO semester (semid, year)
 VALUES (1, 2023),
        (2, 2024),
        (3, 2025);
-
-INSERT INTO lecturers (lid, lname)
-VALUES (1, 'lephu'),
-       (2, 'tanhai'),
-       (3, 'quoctuan'),
-       (4, 'doanphong');
 
 INSERT INTO subjects (subid, subname)
 VALUES (1, 'Math'),
@@ -160,28 +127,3 @@ VALUES (1, '2024-04-25 08:00:00', 90, 1),
        (3, '2024-04-26 08:00:00', 90, 4),
        (4, '2024-05-02 08:00:00', 90, 5),
        (5, '2024-05-02 08:00:00', 90, 6);
-
-INSERT INTO students (sid, sname)
-VALUES (1, 'vanbao'),
-       (2, 'tuanminh'),
-       (3, 'hoainam'),
-       (4, 'trungdung');
-
-INSERT INTO students_courses (sid, cid)
-VALUES (1, 1),
-       (2, 1),
-       (2, 2),
-       (2, 3),
-       (3, 1),
-       (3, 2);
-
-INSERT INTO grades (eid, sid, score)
-VALUES (1, 1, 7),
-       (1, 2, 8),
-       (1, 3, 7),
-       (2, 1, 8),
-       (2, 2, 6),
-       (2, 3, 9);
-
-INSERT INTO users_lecturers (username, lid)
-VALUES ('lecturer', 1);
