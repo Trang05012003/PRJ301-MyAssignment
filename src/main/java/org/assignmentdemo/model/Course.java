@@ -1,53 +1,33 @@
 package org.assignmentdemo.model;
 
 public class Course {
-    private int cid;
-    private String cname;
-    private int lid;
-    private int subid;
+    private int id;
+    private String name;
     private int semid;
 
     public Course() {
     }
 
-    public Course(int cid, String cname, int lid, int subid, int semid) {
-        this.cid = cid;
-        this.cname = cname;
-        this.lid = lid;
-        this.subid = subid;
+    public Course(int id, String name, int semid) {
+        this.id = id;
+        this.name = name;
         this.semid = semid;
     }
 
-    public int getCid() {
-        return cid;
+    public int getId() {
+        return id;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCname() {
-        return cname;
+    public String getName() {
+        return name;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
-    }
-
-    public int getLid() {
-        return lid;
-    }
-
-    public void setLid(int lid) {
-        this.lid = lid;
-    }
-
-    public int getSubid() {
-        return subid;
-    }
-
-    public void setSubid(int subid) {
-        this.subid = subid;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSemid() {

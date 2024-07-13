@@ -8,11 +8,24 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "AdminDashboardController", urlPatterns = "/admin/dashboard")
+@WebServlet(name = "AdminDashboardController", urlPatterns = "/admin/dashboard/*")
 public class AdminDashboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/view/admin/dashboard.jsp").forward(request, response);
+        String path = request.getRequestURI();
+
+        switch (path) {
+            case "/admin/dashboard": {
+                request.getRequestDispatcher("/view/admin/dashboard.jsp").forward(request, response);
+                break;
+            }
+            case "/admin/dashboard/lectures": {
+                break;
+            }
+            case "/admin/dashboard/students": {
+                break;
+            }
+        }
     }
 
     @Override

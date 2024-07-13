@@ -1,23 +1,23 @@
 package org.assignmentdemo.model;
 
 public class Semester {
-    private int semid;
+    private int id;
     private int year;
 
     public Semester() {
     }
 
-    public Semester(int semid, int year) {
-        this.semid = semid;
+    public Semester(int id, int year) {
+        this.id = id;
         this.year = year;
     }
 
-    public int getSemid() {
-        return semid;
+    public int getId() {
+        return id;
     }
 
-    public void setSemid(int semid) {
-        this.semid = semid;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getYear() {

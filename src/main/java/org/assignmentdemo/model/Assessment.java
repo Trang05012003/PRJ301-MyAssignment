@@ -1,35 +1,33 @@
 package org.assignmentdemo.model;
 
 public class Assessment {
-    private int aid;
-    private String aname;
+    private int id;
+    private String name;
     private float weight;
-    private Integer subid;
 
     public Assessment() {
     }
 
-    public Assessment(int aid, String aname, float weight, Integer subid) {
-        this.aid = aid;
-        this.aname = aname;
+    public Assessment(int id, String name, float weight) {
+        this.id = id;
+        this.name = name;
         this.weight = weight;
-        this.subid = subid;
     }
 
-    public int getAid() {
-        return aid;
+    public int getId() {
+        return id;
     }
 
-    public void setAid(int aid) {
-        this.aid = aid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getAname() {
-        return aname;
+    public String getName() {
+        return name;
     }
 
-    public void setAname(String aname) {
-        this.aname = aname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public float getWeight() {
@@ -38,13 +36,5 @@ public class Assessment {
 
     public void setWeight(float weight) {
         this.weight = weight;
-    }
-
-    public Integer getSubid() {
-        return subid;
-    }
-
-    public void setSubid(Integer subid) {
-        this.subid = subid;
     }
 }

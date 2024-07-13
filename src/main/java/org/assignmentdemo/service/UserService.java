@@ -127,4 +127,27 @@ public class UserService extends DbContext<User> {
 
         return null;
     }
+
+    public ArrayList<User> getUsersByRole(String role) {
+        ArrayList<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE role = ?";
+        try (PreparedStatement stmt = this.getConnection().prepareStatement(sql)) {
+            stmt.setString(1, role);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    userList.add(new User(
+                            rs.getInt("id"),
+                            rs.getString("username"),
+                            rs.getString("password"),
+                            rs.getString("role"),
+                            rs.getString("name")
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
 }

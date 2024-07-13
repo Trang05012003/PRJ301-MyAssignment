@@ -1,33 +1,43 @@
 package org.assignmentdemo.model;
 
 public class Grade {
-    private int eid;
-    private int sid;
+    private int id;
+    private int uid;
+    private int aid;
     private float score;
 
     public Grade() {
     }
 
-    public Grade(int eid, int sid, float score) {
-        this.eid = eid;
-        this.sid = sid;
+    public Grade(int id, int uid, int aid, float score) {
+        this.id = id;
+        this.uid = uid;
+        this.aid = aid;
         this.score = score;
     }
 
-    public int getEid() {
-        return eid;
+    public int getId() {
+        return id;
     }
 
-    public void setEid(int eid) {
-        this.eid = eid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getSid() {
-        return sid;
+    public int getUid() {
+        return uid;
     }
 
-    public void setSid(int sid) {
-        this.sid = sid;
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
     }
 
     public float getScore() {
