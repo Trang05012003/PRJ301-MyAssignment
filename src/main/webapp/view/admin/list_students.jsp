@@ -24,7 +24,13 @@
         <td><%= student.getUsername() %></td>
         <td><%= student.getName() %></td>
         <td><%= student.getRole() %></td>
-        <td><a href="<%= request.getContextPath() %>/admin/students/<%= student.getId() %>">View Details</a></td>
+        <% if ("admin".equals(role)) { %>
+            <% request.setAttribute("role", "admin"); %>
+            <td><a href="<%= request.getContextPath() %>/admin/students/<%= student.getId() %>/courses">View Details</a></td>
+        <% } else { %>
+            <% request.setAttribute("role", "lecturer"); %>
+            <td><a href="<%= request.getContextPath() %>/lecturer/students/<%= student.getId() %>/courses">View Details</a></td>
+        <% } %>
     </tr>
     <% } %>
 </table>

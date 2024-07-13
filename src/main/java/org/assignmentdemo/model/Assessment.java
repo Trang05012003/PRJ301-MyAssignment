@@ -4,8 +4,24 @@ public class Assessment {
     private int id;
     private String name;
     private float weight;
+    private Grade grade;
 
     public Assessment() {
+    }
+
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+
+    public Assessment(int id, String name, float weight, Grade grade) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.grade = grade;
     }
 
     public Assessment(int id, String name, float weight) {

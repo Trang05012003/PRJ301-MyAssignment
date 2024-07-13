@@ -1,15 +1,16 @@
 package org.assignmentdemo.service;
 
 import org.assignmentdemo.db.DbContext;
+import org.assignmentdemo.model.Assessment;
 import org.assignmentdemo.model.Course;
+import org.assignmentdemo.model.Grade;
 import org.assignmentdemo.model.User;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class CourseService extends DbContext<Course> {
     public CourseService() {
@@ -141,11 +142,79 @@ public class CourseService extends DbContext<Course> {
                             active
                     ));
                 }
-                System.out.println(students.size());
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return students;
+    }
+
+    public List<Grade> getGradesByUserIdAndCourseId(int userId, int courseId) {
+        List<Grade> grades = new ArrayList<>();
+        String sql = "SELECT g.id, g.uid, g.aid, g.score " +
+                "FROM users_courses uc " +
+                "JOIN grades g ON uc.uid = g.uid " +
+                "WHERE uc.uid = ? AND uc.courseId = ?";
+
+        Connection connection = getConnection();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, userId);
+            statement.setInt(2, courseId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Grade grade = new Grade();
+                grade.setId(resultSet.getInt("id"));
+                grade.setUid(resultSet.getInt("uid"));
+                grade.setAid(resultSet.getInt("aid"));
+                grade.setScore(resultSet.getFloat("score"));
+                grades.add(grade);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return grades;
+    }
+
+    public List<Assessment> getAssessments() {
+        List<Assessment> assessments = new ArrayList<>();
+        Connection connection = this.getConnection();
+        try {
+            String sql = "SELECT * FROM assessments";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Assessment assessment = new Assessment();
+                assessment.setId(resultSet.getInt("id"));
+                assessment.setName(resultSet.getString("name"));
+                assessment.setWeight(resultSet.getFloat("weight"));
+                assessments.add(assessment);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return assessments;
+    }
+
+    public ArrayList<Course> getCoursesByStudentId(int studentId) {
+        ArrayList<Course> courses = new ArrayList<>();
+        Connection connection = this.getConnection();
+        try {
+            String sql = "SELECT c.id, c.name, c.semid FROM courses c " +
+                    "JOIN users_courses uc ON c.id = uc.courseId " +
+                    "WHERE uc.uid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, studentId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Course course = new Course();
+                course.setId(resultSet.getInt("id"));
+                course.setName(resultSet.getString("name"));
+                course.setSemid(resultSet.getInt("semid"));
+                courses.add(course);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courses;
     }
 }

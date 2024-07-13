@@ -1,12 +1,16 @@
 package org.assignmentdemo.service;
 
 import org.assignmentdemo.db.DbContext;
+import org.assignmentdemo.model.Assessment;
+import org.assignmentdemo.model.Grade;
 import org.assignmentdemo.model.User;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserService extends DbContext<User> {
     public UserService() {
@@ -149,5 +153,27 @@ public class UserService extends DbContext<User> {
         }
 
         return userList;
+    }
+
+    public List<Grade> getGradesByStudentId(int studentId) {
+        List<Grade> grades = new ArrayList<>();
+        Connection connection = this.getConnection();
+        try {
+            String sql = "SELECT * FROM grades WHERE uid = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, studentId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Grade grade = new Grade();
+                grade.setId(resultSet.getInt("id"));
+                grade.setUid(resultSet.getInt("uid"));
+                grade.setAid(resultSet.getInt("aid"));
+                grade.setScore(resultSet.getFloat("score"));
+                grades.add(grade);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return grades;
     }
 }

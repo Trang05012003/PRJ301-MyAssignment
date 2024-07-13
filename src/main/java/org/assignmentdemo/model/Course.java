@@ -1,9 +1,27 @@
 package org.assignmentdemo.model;
 
+import java.util.ArrayList;
+
 public class Course {
     private int id;
     private String name;
     private int semid;
+    private ArrayList<Assessment> assessments;
+
+    public ArrayList<Assessment> getAssessments() {
+        return assessments;
+    }
+
+    public Course(int id, String name, int semid, ArrayList<Assessment> assessments) {
+        this.id = id;
+        this.name = name;
+        this.semid = semid;
+        this.assessments = assessments;
+    }
+
+    public void setAssessments(ArrayList<Assessment> assessments) {
+        this.assessments = assessments;
+    }
 
     public Course() {
     }

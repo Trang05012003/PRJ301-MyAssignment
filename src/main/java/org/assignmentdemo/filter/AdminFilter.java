@@ -20,7 +20,7 @@ public class AdminFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
 
-        if ((path.equals("/admin/dashboard/students") || path.startsWith("/admin/students")) && session.getAttribute("role") != null && session.getAttribute("role").equals("lecturer")) {
+        if (path.equals("/admin/dashboard/students") && session.getAttribute("role") != null && session.getAttribute("role").equals("lecturer")) {
             chain.doFilter(request, response);
         }
 
