@@ -3,18 +3,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Student List</title>
+    <title>Lecturer Course Students</title>
     <link href="<%= request.getContextPath() %>/css/text.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<h2>Student List</h2>
+<h2>Lecturer Course Students</h2>
 <table border="1">
     <tr>
         <th>Id</th>
         <th>Username</th>
         <th>Name</th>
         <th>Role</th>
-        <th>Action</th>
+        <th>Active</th>
     </tr>
     <% List<User> students = (List<User>) request.getAttribute("students");
         for (User student : students) { %>
@@ -23,11 +23,11 @@
         <td><%= student.getUsername() %></td>
         <td><%= student.getName() %></td>
         <td><%= student.getRole() %></td>
-        <td><a href="<%= request.getContextPath() %>/admin/dashboard/students/<%= student.getId() %>">View Details</a></td>
+        <td><%= student.getActiveCourse() ? "Active" : "Closed" %></td>
     </tr>
     <% } %>
 </table>
 <br>
-<a href="<%= request.getContextPath() %>/admin/dashboard">Back to Dashboard</a>
+<a href="<%= request.getContextPath() %>/admin/lecturer/lecturerCourses?lecturerId=<%= request.getAttribute("lecturerId")%>">Back to Lecturer Courses</a>
 </body>
 </html>

@@ -6,6 +6,24 @@ public class User {
     private String password;
     private String role;
     private String name;
+    private boolean activeCourse = false;
+
+    public boolean getActiveCourse() {
+        return activeCourse;
+    }
+
+    public void setActiveCourse(boolean activeCourse) {
+        this.activeCourse = activeCourse;
+    }
+
+    public User(int id, String username, String password, String role, String name, boolean activeCourse) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.name = name;
+        this.activeCourse = activeCourse;
+    }
 
     public User() {
     }

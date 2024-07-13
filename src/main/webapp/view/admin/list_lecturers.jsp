@@ -10,16 +10,20 @@
 <h2>Lecturer List</h2>
 <table border="1">
     <tr>
+        <th>Id</th>
         <th>Username</th>
         <th>Name</th>
+        <th>Role</th>
         <th>Action</th>
     </tr>
     <% List<User> lecturers = (List<User>) request.getAttribute("lecturers");
         for (User lecturer : lecturers) { %>
     <tr>
+        <td><%= lecturer.getId() %></td>
         <td><%= lecturer.getUsername() %></td>
         <td><%= lecturer.getName() %></td>
-        <td><a href="<%= request.getContextPath() %>/admin/editLecturer?username=<%= lecturer.getUsername() %>">Edit</a> | <a href="<%= request.getContextPath() %>/admin/deleteLecturer?username=<%= lecturer.getUsername() %>">Delete</a></td>
+        <td><%= lecturer.getRole() %></td>
+        <td><a href="<%= request.getContextPath() %>/admin/lecturer/lecturerCourses?lecturerId=<%= lecturer.getId() %>">View Courses Of Lecture</a></td>
     </tr>
     <% } %>
 </table>

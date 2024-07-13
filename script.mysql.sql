@@ -46,10 +46,12 @@ CREATE TABLE users_courses
 (
     id       INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
     uid      INT NOT NULL,
+    lid      INT NOT NULL,
     courseId INT NOT NULL,
     active   BOOLEAN DEFAULT TRUE,
     FOREIGN KEY (uid) REFERENCES users (id),
-    FOREIGN KEY (courseId) REFERENCES courses (id)
+    FOREIGN KEY (courseId) REFERENCES courses (id),
+    FOREIGN KEY (lid) REFERENCES users (id)
 );
 
 INSERT INTO semester (year)
@@ -62,7 +64,8 @@ VALUES ('lecturer', 'lecturer', 'lecturer', 'lephu'),
        ('student1', 'student', 'student', 'vanbao'),
        ('student2', 'student', 'student', 'tuanminh'),
        ('student3', 'student', 'student', 'hoainam'),
-       ('student4', 'student', 'student', 'trungdung');
+       ('student4', 'student', 'student', 'trungdung'),
+        ('admin', 'admin', 'admin', 'admin');
 
 INSERT INTO courses (name, semid)
 VALUES ('Web development', 1),
@@ -84,7 +87,7 @@ VALUES (1, 1, 85),
        (4, 4, 82),
        (1, 5, 88);
 
-INSERT INTO users_courses (uid, courseId)
-VALUES (1, 1),
-       (2, 2),
-       (3, 3);
+INSERT INTO users_courses (uid, lid, courseId)
+VALUES (2, 1, 1),
+       (3, 1, 2),
+       (4, 1, 3);
