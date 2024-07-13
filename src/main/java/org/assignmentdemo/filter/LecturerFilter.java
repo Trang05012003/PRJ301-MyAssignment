@@ -23,6 +23,6 @@ public class LecturerFilter implements Filter {
         if (session != null && session.getAttribute("role") != null && session.getAttribute("role").equals("lecturer")) {
             chain.doFilter(request, response);
         }
-        httpResponse.sendRedirect(httpRequest.getContextPath() + "/access-denied.jsp");
+        httpResponse.sendRedirect("/view/access-denied.jsp");
     }
 }

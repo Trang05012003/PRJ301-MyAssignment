@@ -34,20 +34,26 @@ public class LoginController extends HttpServlet {
         User user = this.userService.authenticateUser(username, password);
 
         if (user == null) {
-            resp.sendRedirect("/login?error=invalid_credentials");
+            req.setAttribute("error", "Invalid username or password");
+            req.getRequestDispatcher("view/auth/login.jsp").forward(req, resp);
+            return;
         }
 
         HttpSession session = req.getSession();
         session.setAttribute("loggedInUser", true);
         session.setAttribute("role", user.getRole());
+        session.setAttribute("username", user.getName());
 
         if ("lecturer".equals(user.getRole())) {
             resp.sendRedirect("/lecturer/dashboard");
+            return;
         } else if ("student".equals(user.getRole())) {
             resp.sendRedirect("/student/dashboard");
+            return;
         }
 
-        resp.sendRedirect("/login?error=unknown_role");
+        req.setAttribute("error", "Unknown role");
+        req.getRequestDispatcher("view/auth/login.jsp").forward(req, resp);
     }
 
     @Override
