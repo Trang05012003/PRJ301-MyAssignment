@@ -16,7 +16,8 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        String path = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
+        String path = httpRequest.getRequestURI();
+
         if (path.equals("/login") || path.equals("/signup")) {
             chain.doFilter(request, response);
             return;
@@ -24,7 +25,7 @@ public class AuthenticationFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
         if (session == null || session.getAttribute("loggedInUser") == null) {
-            httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
+            httpResponse.sendRedirect("/login");
             return;
         }
 

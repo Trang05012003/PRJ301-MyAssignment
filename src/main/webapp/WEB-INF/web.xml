@@ -12,4 +12,5 @@
         <filter-name>LecturerFilter</filter-name>
         <url-pattern>/lecturer/*</url-pattern>
     </filter-mapping>
+
 </web-app>
