@@ -20,12 +20,14 @@ public class AdminFilter implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
 
-        if (path.startsWith("/admin/students") && session.getAttribute("role") != null && session.getAttribute("role").equals("lecturer")) {
+        if ((path.equals("/admin/dashboard/students") || path.startsWith("/admin/students")) && session.getAttribute("role") != null && session.getAttribute("role").equals("lecturer")) {
             chain.doFilter(request, response);
         }
 
         if (session != null && session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
             chain.doFilter(request, response);
         }
+
         httpResponse.sendRedirect("/view/access-denied.jsp");
-    }}
+    }
+}

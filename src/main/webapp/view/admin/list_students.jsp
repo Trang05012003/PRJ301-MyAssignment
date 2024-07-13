@@ -17,17 +17,22 @@
         <th>Action</th>
     </tr>
     <% List<User> students = (List<User>) request.getAttribute("students");
+        String role = (String) request.getSession().getAttribute("role");
         for (User student : students) { %>
     <tr>
         <td><%= student.getId() %></td>
         <td><%= student.getUsername() %></td>
         <td><%= student.getName() %></td>
         <td><%= student.getRole() %></td>
-        <td><a href="<%= request.getContextPath() %>/admin/dashboard/students/<%= student.getId() %>">View Details</a></td>
+        <td><a href="<%= request.getContextPath() %>/admin/students/<%= student.getId() %>">View Details</a></td>
     </tr>
     <% } %>
 </table>
 <br>
+<% if ("admin".equals(role)) { %>
 <a href="<%= request.getContextPath() %>/admin/dashboard">Back to Dashboard</a>
+<% } else { %>
+<a href="<%= request.getContextPath() %>/lecturer/dashboard">Back to Lecturer Courses</a>
+<% } %>
 </body>
 </html>

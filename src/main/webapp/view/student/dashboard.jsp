@@ -7,7 +7,6 @@
 </head>
 <body>
 <h2>Student Dashboard</h2>
-<h3>Welcome, <%= session.getAttribute("username") %>!</h3>
 
 <h4>All Courses</h4>
 <table border="1">

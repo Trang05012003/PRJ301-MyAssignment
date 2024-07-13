@@ -6,7 +6,6 @@
 </head>
 <body>
 <h2>Admin Dashboard</h2>
-<h3>Welcome, <%= session.getAttribute("username") %>!</h3>
 
 <h4>Lists</h4>
 <a href="/admin/dashboard/lecturers">View Lecturers</a><br>

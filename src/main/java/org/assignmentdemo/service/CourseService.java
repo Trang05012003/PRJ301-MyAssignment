@@ -136,8 +136,8 @@ public class CourseService extends DbContext<Course> {
                             rs.getInt("id"),
                             rs.getString("username"),
                             rs.getString("password"),
-                            rs.getString("name"),
                             rs.getString("role"),
+                            rs.getString("name"),
                             active
                     ));
                 }

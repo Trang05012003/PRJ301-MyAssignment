@@ -37,6 +37,7 @@ public class AdminLecturerCoursesController extends HttpServlet {
                 ArrayList<User> students = this.courseService.getStudentsByLecturerAndCourse(lecturerId, courseId);
                 request.setAttribute("students", students);
                 request.setAttribute("lecturerId", lecturerId);
+                request.setAttribute("role", "admin");
                 request.getRequestDispatcher("/view/admin/list_lecturer_course_students.jsp").forward(request, response);
                 return;
             }

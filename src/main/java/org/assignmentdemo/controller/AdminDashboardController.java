@@ -38,6 +38,7 @@ public class AdminDashboardController extends HttpServlet {
             }
             case "/admin/dashboard/students": {
                 ArrayList<User> students = this.userService.getUsersByRole("student");
+                request.setAttribute("role", "admin");
                 request.setAttribute("students", students);
                 request.getRequestDispatcher("/view/admin/list_students.jsp").forward(request, response);
                 break;

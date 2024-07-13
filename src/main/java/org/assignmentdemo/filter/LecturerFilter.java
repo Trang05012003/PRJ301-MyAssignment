@@ -14,15 +14,19 @@ public class LecturerFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         HttpSession session = httpRequest.getSession(false);
 
-        if (session != null && session.getAttribute("role") != null && (session.getAttribute("role").equals("lecturer") || session.getAttribute("role").equals("admin"))) {
-            chain.doFilter(request, response);
+        if (session != null && session.getAttribute("role") != null) {
+            String role = session.getAttribute("role").toString();
+            if ("lecturer".equals(role) || "admin".equals(role)) {
+                chain.doFilter(request, response);
+                return;
+            }
         }
+
         httpResponse.sendRedirect("/view/access-denied.jsp");
     }
 }
