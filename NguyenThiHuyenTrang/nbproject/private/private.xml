@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/Controller/ListStudentController.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/login.jsp</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/Controller/StudentDetail.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/list_student.jsp</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/dal/SemesterContext.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/studentdashbroad.jsp</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/model/Grade.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/dal/GradeContext.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/lecturercourse.jsp</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/model/Course.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/WEB-INF/web.xml</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/Controller/LectureStudent.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/Controller/LectureInputController.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/src/java/dal/CourseContext.java</file>
+            <file>file:/E:/SWP391/NguyenThiHuyenTrang/web/student_course_grade.jsp</file>
+        </group>
+    </open-files>
+</project-private>
